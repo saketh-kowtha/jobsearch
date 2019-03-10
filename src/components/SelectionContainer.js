@@ -1,9 +1,16 @@
+/**
+ * Author: Saketh Kowtha
+ * Description: This file exports SelectionContainer Component which constists of user input feilds 
+ */
+
 import React, {Component} from 'react'
 import { Button, Input, Dropdown } from 'semantic-ui-react'
 import generateCities from './cities.js'
 import 'semantic-ui-css/semantic.min.css'
 import axios from 'axios';
 import util from "./utils"
+const strings = require("../strings").getStrings()
+
 class SelectionContainer extends Component{
     constructor(){
         super()
@@ -13,25 +20,30 @@ class SelectionContainer extends Component{
             skills: "",
             citiesList:[]
         }
+        //this method get citites list from getCities method and updates in state cariable
         generateCities((x) => this.setState({citiesList: x}))
-        window.x = this.state
     }
+
+    /**
+     * This method is to perform action after clicking search button
+     */
     handleClick=(e)=>{
         if(!this.state.city && !this.state.exp && this.state.exp !==0  && !this.state.skills){
-            console.log(this.state)
-            alert("Error")
+            alert(strings.invalid_error)
         }
         else{
             this.getRequest(this.state)
         }            
     }
 
+    /**
+     * this method will fetches data from server
+     */
      getRequest = (data) => {
         axios.get("https://api.myjson.com/bins/kez8a").then((resp) => {
             if(resp.status === 200 && resp.statusText === "OK"){
                 if(resp.data && resp.data.jobsfeed){
                     let result = []
-                    window.x = result
                     let ele = resp.data.jobsfeed
                     let experienceSet = [], locationsSet = [], skillsSet = []                        
                     if(data.exp || data.exp === 0)
@@ -46,7 +58,7 @@ class SelectionContainer extends Component{
                 }
             }
         }).catch((err) => {
-
+            alert(strings.server_error)
         })
     }
     
@@ -62,6 +74,7 @@ class SelectionContainer extends Component{
     setSkills = (event,{value}) =>{
         this.setState({skills: value})
     }
+
     render(){
 
         return(

@@ -1,8 +1,17 @@
 let Strings = {
-
+    postedOn: "Posted On:",
+    apply: "Apply",
+    experience: "Experience",
+    location: "Location",
+    server_error: "Oops something wrong!!!",
+    invalid_error: "Please provide some input"
 }
 
 
-var getString = (key) => {
-    return Strings[key] || key
+const getStrings = () => {
+    return Strings
+}
+
+module.exports = {
+    getStrings
 }

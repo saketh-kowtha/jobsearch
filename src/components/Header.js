@@ -1,3 +1,9 @@
+/**
+ * Author: Saketh Kowtha
+ * Description: This file exports Header Component 
+ */
+
+
 import React, { Component } from 'react';
 import { Image } from 'semantic-ui-react'
 

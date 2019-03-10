@@ -1,31 +1,45 @@
+/**
+ * Author: Saketh Kowtha
+ * Description: This file export ResultComponent which will show multiple ResultCard components based on Array Json
+ */
+
 import React, {Component}from 'react'
 import { Icon, Input } from 'semantic-ui-react'
 import ResultCard from './ResultCard'
 import 'semantic-ui-css/semantic.min.css'
 import util from "./utils"
+const strings = require("../strings").getStrings()
 
+/** class ResultComponent for entire result area which will appear after one sucessfull search */
 class ResultComponent extends Component {
     constructor(){
         super()
-        this.state = {
-
+        this.state = {}
+        this.sortOrder = {
+            location: "up",
+            experience: "up"
         }
-        this.expSort = "up"
+        this.searchCount = ""
     }
+
+    /** Search bar onchange function */
     handleChange = (event, {value}) =>{
-       this.setState({ data: this.props.data.filter((ele) => ele.title.toLocaleUpperCase().indexOf(value.toLocaleUpperCase()) !== -1)})
+       let data = this.props.data.filter((ele) => ele.title.toLocaleUpperCase().indexOf(value.toLocaleUpperCase()) !== -1)
+       this.setState({ data: data})
+       this.searchCount = data.length  
+       if(!value || value === "")
+        this.searchCount = ""
     }
 
-    experienceSort = () =>{
-        console.log(this.props.data)
-        this.setState({ data: util.sort(this.props.data, "experience")})
+    /** Sort function for experience sort and locationsort */
+    sort = (feild) =>{
+        this.setState({ data: util.sort(this.props.data, feild, this.sortOrder[feild])})
+        if(this.sortOrder[feild] === "up")
+            this.sortOrder[feild] = "down"
+        else    
+            this.sortOrder[feild] = "up"
     }
-
-
-    locationSort = () =>{
-        this.setState({ data: util.sort(this.props.data, "location")})
-    }
-
+ 
  
 
     render(){
@@ -36,19 +50,18 @@ class ResultComponent extends Component {
                         Found {this.props.data.length || 0 } Out of {this.props.data.length || 0 } Records 
                     </div>
                     <div className="sorting">
-                        <span><Icon className="sortAction" name="sort alphabet down" onClick={this.experienceSort}/> Experience</span>
-                        <span><Icon className="sortAction" name="sort alphabet down" onClick={this.locationSort} /> Location</span>
+                        <span><Icon className="sortAction" name="sort alphabet down" onClick={() => this.sort("experience")}/> {strings.experience}</span>
+                        <span><Icon className="sortAction" name="sort alphabet down" onClick={() => this.sort("location")} /> {strings.location}</span>
                     </div>
                 </div>
                 <div className="searchBar"> 
-                <Input icon='search' iconPosition='left' onChange = {this.handleChange} placeholder='Search Jobs By Title...' />
-
+                    <Input icon='search' iconPosition='left' onChange = {this.handleChange} placeholder='Search Jobs By Title...' /><br/>
+                    { (this.searchCount) ? <div><label>Search Works on {this.searchCount} Results </label></div>: ""}
                 </div>
                 <div className="resultArea">
                         {( (this.state && this.state.data) || this.props.data).map((ele) => <ResultCard data={ele} />)}
                 </div>
             </div>
-
         )
     }
 }

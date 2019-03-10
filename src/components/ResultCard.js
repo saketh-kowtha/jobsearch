@@ -1,8 +1,12 @@
+/**
+ * Author: Saketh Kowtha
+ * Description: This file exports ResultCard Component (Job details card in this card we are displaying job details)
+ */
+
 import React, {Component} from 'react'
 import { Button, Icon, Segment, Header }  from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
-import util from "./utils"
-
+const strings = require("../strings").getStrings()
 class ResultCard extends Component{
     constructor(){
         super()
@@ -15,8 +19,8 @@ class ResultCard extends Component{
                 <Segment attached className="center">
                     <Icon name="building"  size="big"/>
                     <span>{this.props.data.companyname}<span></span></span>
-                    <Button positive className="applyBtn" onClick={() => window.location.href = (this.props.data.applylink)}>Apply</Button>
-                    {(this.props.data.created) ? <span className="createdLabel">Posted On: {this.props.data.created}</span> : ""}
+                    <Button positive className="applyBtn" onClick={() => window.location.href = (this.props.data.applylink)}>{strings.apply}</Button>
+                    {(this.props.data.created) ? <span className="createdLabel"> {strings.postedOn} {this.props.data.created}</span> : ""}
                     {(this.props.data.type) ? <span className="jobType"><Icon name="briefcase" size="small" />{this.props.data.type}</span>: ""}
                     <Header textAlign="center" className="Resultcontainer">
                         {this.props.data.title}

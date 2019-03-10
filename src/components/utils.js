@@ -1,3 +1,9 @@
+/**
+ * Author: Saketh Kowtha
+ * Description: This is helper functions file
+ */
+
+ /** this method returns an Array json which consists of user required job results based on skills input */
 let compareSkills = (state, data) => {
     let empSkills = state.skills.split(",")
     let resultSet =  data.filter((ele) => {
@@ -12,6 +18,7 @@ let compareSkills = (state, data) => {
     return resultSet
 }
 
+ /** this method returns an Array json which consists of user required job results based on experience input */
 let compareExp = (state, data) => {
     let empExp = state.exp
     let resultSet = data.filter((ele)=>{
@@ -28,6 +35,7 @@ let compareExp = (state, data) => {
     return resultSet
 }
 
+ /** this method returns an Array json which consists of user required job results based on location input */
 let compareLocation = (state, data) => {
     let empLocation = state.city
     return data.filter((ele) => {
@@ -35,6 +43,7 @@ let compareLocation = (state, data) => {
     })
 }
 
+ /** this method will remove dulplicates */
 let removeDuplicates= (obj, key)=> {
     return obj.filter((ele, index, self )=>  index === self.findIndex((t) => (
         t[key] === ele[key] && t[key]
@@ -42,14 +51,25 @@ let removeDuplicates= (obj, key)=> {
    )
 }
 
-let sort = (obj, key) => {
-    return obj.sort((obj1, obj2) => {
-        if(obj1[key] > obj2[key])
-            return -1
-        else if(obj1[key] < obj2[key])
-            return 1
-        return 0
-    })
+ /** this method will sort an Array based on given order */
+let sort = (obj, key, order) => {
+    if(order === "up")
+        return obj.sort((obj1, obj2) => { 
+            if(obj1[key] > obj2[key])
+                return -1
+            else if(obj1[key] < obj2[key])
+                return 1
+            return 0
+        })
+    else
+        return obj.sort((obj1, obj2) => { 
+            if(obj1[key] < obj2[key])
+                return -1
+            else if(obj1[key] > obj2[key])
+                return 1
+            return 0
+        })
+        
 }
 export default  {
     compareExp,
