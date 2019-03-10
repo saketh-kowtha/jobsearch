@@ -16,7 +16,7 @@ const getCities = (cb) => {
            cb(util.removeDuplicates(result, "key"))
         }
     }).catch((err) => {
-
+        alert("Something Wrong Please try later!!!!")
     })
 }
 
