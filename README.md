@@ -58,9 +58,9 @@ Note: if you provide invalid arguments to app.js it will exit the process with p
 ```
 
 ##### Note:
-    + I am getting city names from the api because city names are not clear ex: (Bengaluru, Bangalore, Bengaluru/Bangalore etc...)
-    + I have choosen React for this application 
+    * I am getting city names from the api because city names are not clear ex: (Bengaluru, Bangalore, Bengaluru/Bangalore etc...)
+    * I have choosen React for this application 
 
 ##### Important:
-    + Thank you BYJUS for this oppurtuinity i have very little experience with React i am familiar with React syntax  i have used Babel, Es6 and React similar framework during my internship (JUSPAY).I am good in Angular 1 and i dont have real time experience with VUE.
-    + Angular 1 will not work in all the browsers. So i have choosen REACT even without good knowledge i have did it while learning it 
+    * Thank you BYJUS for this oppurtuinity i have very little experience with React i am familiar with React syntax  i have used Babel, Es6 and React similar framework during my internship (JUSPAY).I am good in Angular 1 and i dont have real time experience with VUE.
+    * Angular 1 will not work in all the browsers. So i have choosen REACT even without good knowledge i have did it while learning it 
