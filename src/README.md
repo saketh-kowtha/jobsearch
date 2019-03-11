@@ -8,7 +8,7 @@
 ![alt text](components/Images/header.png)
 
 ##### Result Card
-![alt text](components/Images/ResultCard.png)
+![alt text](components/Images/Resultcard.png)
 
 ##### Result Component
 ![alt text](components/Images/ResultContainer.png)
