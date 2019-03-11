@@ -51,7 +51,7 @@ let compareLocation = (state, data) => {
 
  /** this method will remove dulplicates */
 let removeDuplicates= (obj, key)=> {
-    if(typeof obj !== "object" || typeof key !== "sting")
+    if(typeof obj !== "object" || typeof key !== "string")
         throw new Error("removeDuplicates expecting 1 object type and 1 string type")
     return obj.filter((ele, index, self )=>  index === self.findIndex((t) => (
         t[key] === ele[key] && t[key]
