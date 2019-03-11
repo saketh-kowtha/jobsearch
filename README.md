@@ -1,23 +1,23 @@
 ## Job Search
 
 
-#### Download Instructions
-
-##### Step 1:
-* Download the Repo using ```git clone```
-
 #### Instructions to start application
 ##### Step 1: 
 * Use ```npm i``` to install node modules
+
 ##### Step 2:
+* Use ```npm run build``` to genererate build folder
+
+##### Step 3:
 * Run this command to see an output ```node app.js -p PORT_NUMBER``` default port number is 5454
 
 Note: if you provide invalid arguments to app.js it will exit the process with proper error message
-##### Step 3:
+##### Step 4:
 * Open http://localhost:PORT_NUMBER to see an output
 
 ```
     npm i
+    npm run build
     node app.js -p 5555 #-p and port numbers are optional default port is 5454
     #Go to browser open http://localhost:PORT_NUMBER
 ```
@@ -41,15 +41,18 @@ Note: if you provide invalid arguments to app.js it will exit the process with p
 * Install NPM packages using ```npm i```
 
 ##### Step 2:
+* Run ```npm run build``` to create build folder
+##### Step 3:
 * Start the server using ```npm i -g serve ```
 
-##### Step 3:
+##### Step 4:
 * Run the following command to run production server ```serve -s build```
-##### Step 4: 
+##### Step 5: 
 * Open this link to see an output http://localhost:5000
 
 ```
     npm i
+    npm run build
     npm i -g serve
     serve -s build
 ```
